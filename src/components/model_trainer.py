@@ -16,6 +16,8 @@ from src.exception import CustomException
 from src.logger import logging
 from src.utils import evaluate_models, load_object, save_object, upload_file
 
+from src.constant import *
+
 
 @dataclass
 class ModelTrainerConfig:
@@ -107,6 +109,7 @@ class ModelTrainer:
             upload_file(
                 from_filename=self.model_trainer_config.trained_model_file_path,
                 to_filename="model.pkl",
+                bucket_name=AWS_S3_BUCKET_NAME,
             )
 
             return accuracy_score
