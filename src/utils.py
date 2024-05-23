@@ -15,27 +15,7 @@ from sklearn.model_selection import train_test_split
 from src.exception import CustomException
 
 
-def export_collection_as_dataframe(collection_name, db_name):
-    try:
-        # uniform resource indentifier
-        uri = "mongodb+srv://snshrivas:Snshrivas@cluster0.u46c4.mongodb.net/?retryWrites=true&w=majority"
 
-        # Create a new client and connect to the server
-        mongo_client = MongoClient(uri)
-
-        collection = mongo_client[db_name][collection_name]
-
-        df = pd.DataFrame(list(collection.find()))
-
-        if "_id" in df.columns.to_list():
-            df = df.drop(columns=["_id"], axis=1)
-
-        df.replace({"na": np.nan}, inplace=True)
-
-        return df
-
-    except Exception as e:
-        raise CustomException(e, sys)
 
 
 def save_object(file_path, obj):

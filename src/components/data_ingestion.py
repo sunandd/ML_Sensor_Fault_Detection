@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from src.constant import *
 from src.exception import CustomException
 from src.logger import logging
-from src.utils import export_collection_as_dataframe
+
 
 
 @dataclass
@@ -28,11 +28,10 @@ class DataIngestion:
         logging.info("Entered initiate_data_ingestion method of DataIngestion class")
 
         try:
-            df: pd.DataFrame = export_collection_as_dataframe(
-                db_name=MONGO_DATABASE_NAME, collection_name=MONGO_COLLECTION_NAME
-            )
+            logging.info("Entered the initiate_data_ingestion method of DataIngestion class")
 
-            logging.info("Exported collection as dataframe")
+            #read the data from the csv file
+            df=pd.read_csv(os.path.join('notebook\wafer_23012020_041211.csv', 'wafer.csv'))
 
             os.makedirs(
                 os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True
