@@ -22,7 +22,11 @@ python app.py
 🔧 Built with
 
 flask
+
 Python 3.8
+
 Machine learning
+
 Scikit learn
+
 🏦 Industrial Use Cases
